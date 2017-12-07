@@ -53,6 +53,7 @@
                 <configuration>
                     <dockerHost>${DOCKER_HOST}</dockerHost>
                     <verbose>true</verbose>
+                    <registry>${DOCKER_REGISTRY}</registry>
                     <images>
                         <image>
                             <name>${docker.image.prefix}/${project.artifactId}</name>
