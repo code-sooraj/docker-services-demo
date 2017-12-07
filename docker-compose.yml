@@ -8,17 +8,22 @@ services:
       - "8082:8080"
     networks:
       - demo-network
-
-  db:
+    depends_on:
+      - demodb
+    links:
+      - demodb
+  demodb:
     image: postgres:9.4
     restart: always
-    container_name: db
+    container_name: demodb
+    ports:
+      - "5432:5432"
     volumes:
       - "db-data:/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER:'demouser'
       - POSTGRES_PASSWORD:'demopwd'
-      - POSTGRES_DB:'demodb'
+      - POSTGRES_DB:'mydemodb'
     ports:
       - '5432:5432'
     networks:
